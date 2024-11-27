@@ -1,25 +1,37 @@
 ﻿@inject GameState State
 
 <HeadContent>
-    <style>
-      :root {
-        --board-bg: yellow;
-        --player1: red;
-        --player2: blue;
-      }
-    </style>
+  <style>
+    :root {
+    --board-bg: yellow;
+    --player1: red;
+    --player2: blue;
+    }
+  </style>
 </HeadContent>
 <div>
   <div class="board">
     @for (var i = 0; i < 42; i++)
     {
-       <span class="container">
-         <span></span>
-       </span>
+      <span class="container">
+        <span></span>
+      </span>
     }
   </div>
+  @for (var i = 0; i < 42; i++)
+  {
+    <span class="@pieces[i]"></span>
+  }
 </div>
 
 @code {
+  private string[] pieces = new string[42];
+
+  
+
+  protected override void OnInitialized()
+  {
+    State.ResetBoard();
+  }
 
 }
